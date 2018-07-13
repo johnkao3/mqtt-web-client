@@ -89,7 +89,7 @@
     cmp.subs = []
 
     cmp.connected = false
-    cmp.oriMessages = []
+
     cmp.messages = []
 
     // cmp.websocketclient = {
@@ -195,8 +195,7 @@
         qos:packet.qos,
         payload:packet.payload.toString(),
       }
-      cmp.oriMessages.push(msgObj)
-      cmp.messages = [...cmp.oriMessages].reverse()
+      cmp.messages.unshift(msgObj)
       cmp.update()
     }
   </script>
