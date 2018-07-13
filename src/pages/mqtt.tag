@@ -120,7 +120,6 @@
     }
 
     cmp.on('mount', function() {
-      console.log(_)
       cmp.init()
       $$(window).resize(function() {
         let maxHeight = $$('.page-content').height() - 269 - 88
