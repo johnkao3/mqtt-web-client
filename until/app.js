@@ -14,7 +14,7 @@ var websocketclient = {
     this.client = ''
   },
   subscribe(topic,qos) {
-    this.client.subscribe(topic)
+    this.client.subscribe(topic,qos)
     // this.client.publish(topic, 'Hello mqtt')
   }
 }

@@ -10,6 +10,18 @@
             <span class="input-clear-button"></span>
           </div>
         </div>
+      </li>
+      <li class="item-content item-input">
+        <div class="item-inner">
+          <div class="item-title item-label">QoS</div>
+          <div class="item-input-wrap">
+            <select placeholder="Please choose..." id="sub-qos">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+        </div>
       </li>   
       <li>
         <a href="#" class="item-link list-button" onclick="{parent.subscribe}">Subscribe</a>

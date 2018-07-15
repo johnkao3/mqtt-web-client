@@ -195,11 +195,12 @@
     cmp.subscribe = function() {
       if (typeof mqttclient.client === 'object') {
         let sub_topic = cmp.tags.subscribe_main.refs.topic.value
+        let qos = document.getElementById('sub-qos').value
         if (_.find(cmp.subs, {'name': sub_topic}) ) {
           app.dialog.alert('已經 Subscribe過了...');
           return false;
         }
-        mqttclient.subscribe(sub_topic)
+        mqttclient.subscribe(sub_topic, { qos: Number(qos) })
         cmp.subs.push({name:sub_topic}
         )
       }

@@ -20,6 +20,18 @@
           </div>
         </div>
       </li>
+      <li class="item-content item-input">
+        <div class="item-inner">
+          <div class="item-title item-label">QoS</div>
+          <div class="item-input-wrap">
+            <select placeholder="Please choose..." id="pub-qos">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+        </div>
+      </li>      
       <!-- <li class="item-content item-input">
         <div class="item-inner">
           <div class="item-title item-label">Name</div>
@@ -44,10 +56,11 @@
     })
 
     cmp.publish = function() {
-      if (typeof mqttclient.client === 'object') {
+       if (typeof mqttclient.client === 'object') {
         let topic = cmp.refs.topic.value
         let msg = cmp.refs.msg.value
-        mqttclient.client.publish(topic, msg)
+        let qos = document.getElementById('pub-qos').value
+        mqttclient.client.publish(topic, msg, { qos: Number(qos) })
       }
       else {
         app.dialog.alert('MQTT 尚未連線...')
