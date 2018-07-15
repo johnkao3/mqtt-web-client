@@ -1,20 +1,19 @@
 <mqtt_main>
-  <div class="row">
-    <div class="col-25">
-      <div class="block-title" style="height: 16px;"></div>
-      <div class="list accordion-list">
-        <ul>
-          <li class="accordion-item accordion-item-opened" id="connect">
-            <a href="" class="item-link item-content">
-              <div class="item-inner">
-                <div class="item-title">
-                  連線狀態 
-                  <i class="icon f7-icons color-green" if="{connected}">check_round</i>
-                  <i class="icon f7-icons color-red" if="{!connected}">close_round</i>
-                </div>
-              </div>
-            </a>
-            <div class="accordion-item-content">
+  <div class="list accordion-list">
+    <ul>
+      <li class="accordion-item accordion-item-opened" id="connect">
+        <a href="" class="item-link item-content">
+          <div class="item-inner">
+            <div class="item-title">
+              連線狀態 
+              <i class="icon f7-icons color-green" if="{connected}">check_round</i>
+              <i class="icon f7-icons color-red" if="{!connected}">close_round</i>
+            </div>
+          </div>
+        </a>
+        <div class="accordion-item-content">
+          <div class="row">
+            <div class="col-50">
               <div class="list">
                 <ul>
                   <li class="item-content item-input">
@@ -47,17 +46,45 @@
                 </ul>
               </div>
             </div>
-          </li>
-        </ul>
-      </div>
-      <div class="block block-strong">
-        <button 
-          if="{!connected}"
-          class="button" onclick="{connect}">Connect</button>
-        <button 
-          if="{connected}"
-          class="button color-red " onclick="{disconnect}">Disconnect</button>
-      </div>
+            <div class="col-50">
+              <div class="list">
+                <ul>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Username</div>
+                      <div class="item-input-wrap">
+                        <input type="text" value="" ref="username">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Password</div>
+                      <div class="item-input-wrap">
+                        <input type="password" value="" ref="password">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="block block-strong">
+    <button 
+      if="{!connected}"
+      class="button" onclick="{connect}">Connect</button>
+    <button 
+      if="{connected}"
+      class="button color-red " onclick="{disconnect}">Disconnect</button>
+  </div>  
+  <div class="row">
+    <div class="col-25">
       <subscribe_main
         subs="{subs}"
         ref="sub"
@@ -183,7 +210,7 @@
     }
 
     cmp.onConnect = function() {
-      app.dialog.alert('MQTT 連線成功!');
+      // app.dialog.alert('MQTT 連線成功!');
       app.accordion.close($$("#connect"))
     }
 

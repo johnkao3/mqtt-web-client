@@ -1,4 +1,5 @@
 <subscribe_main>
+  <div class="block-title">SubScribe</div>
   <div class="list">
     <ul>
       <li class="item-content item-input">
