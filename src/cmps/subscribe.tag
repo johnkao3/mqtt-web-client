@@ -41,7 +41,6 @@
     cmp.subs = []
 
     cmp.on('mount', function() {
-      console.log(cmp.parent)
     })
   </script>
 </subscribe_main>

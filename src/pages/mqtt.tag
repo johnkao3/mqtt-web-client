@@ -118,28 +118,6 @@
     cmp.connected = false
 
     cmp.messages = []
-
-    // cmp.websocketclient = {
-    //   client: '',
-    //   connect() {
-    //     let host = 'ws://'+cmp.refs.host.value
-    //     let port = cmp.refs.port.value
-        
-    //     this.client = mqtt.connect(host,{
-    //       port:port
-    //     })
-    //   },
-    //   onConnect() {
-    //     this.client.on('connect', function() {
-
-    //     })
-    //   },
-    //   onMessage() {
-    //     this.client.on('message', function() {
-    //       console.log(message.toString())
-    //     })
-    //   }
-    // }
     
     cmp.init = function() {
       let maxHeight = $$('.page-content').height() - 269 - 88
