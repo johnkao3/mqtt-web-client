@@ -5,9 +5,7 @@ var websocketclient = {
     let host = options.host
     let port = options.port
     
-    this.client = mqtt.connect(host,{
-      port:port
-    })
+    this.client = mqtt.connect(options)
   },
   disconnect(callback) {
     this.client.end(callback())

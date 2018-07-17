@@ -60,6 +60,12 @@
         let topic = cmp.refs.topic.value
         let msg = cmp.refs.msg.value
         let qos = document.getElementById('pub-qos').value
+
+        if (topic.length == 0) {
+          app.dialog.alert('Topic 不得為白...')
+          return false;
+        }
+
         mqttclient.client.publish(topic, msg, { qos: Number(qos) })
       }
       else {

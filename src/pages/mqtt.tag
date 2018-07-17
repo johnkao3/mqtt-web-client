@@ -20,7 +20,7 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Host</div>
                       <div class="item-input-wrap">
-                        <input type="text" value="" ref="host">
+                        <input type="text" value="" id="host">
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
@@ -29,7 +29,7 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Port</div>
                       <div class="item-input-wrap">
-                        <input type="text" value="" ref="port">
+                        <input type="text" value="" id="port">
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Username</div>
                       <div class="item-input-wrap">
-                        <input type="text" value="" ref="username">
+                        <input type="text" value="" id="username">
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
@@ -62,7 +62,7 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Password</div>
                       <div class="item-input-wrap">
-                        <input type="password" value="" ref="password">
+                        <input type="password" value="" id="password">
                         <span class="input-clear-button"></span>
                       </div>
                     </div>
@@ -133,14 +133,36 @@
     })
     
     cmp.connect = function() {
-      let options = {
-        host : `ws://${cmp.refs.host.value}`,
-        port : cmp.refs.port.value
-      }
+      
+      var host = document.getElementById('host').value
+      var port = document.getElementById('port').value
 
-      if (options.host.length == 0 || options.port.length == 0 ) {
+      if (host.length == 0 || port.length == 0 ) {
         app.dialog.alert('Host 或 Port 不得為空白')
         return false;
+      }
+      
+      // MQTT Options
+      var options = {
+        host: host,
+        port: port,
+        keepalive: 10,
+        protocolId: 'MQTT',
+        protocolVersion: 4,
+        clean: true,
+        reconnectPeriod: 1000,
+        connectTimeout: 30 * 1000,
+      }
+
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      if (username.length > 0) {
+        options.username = username
+      }
+
+      if (password.length > 0) {
+        options.password = password
       }
 
       mqttclient.connect(options);
