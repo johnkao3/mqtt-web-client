@@ -118,18 +118,8 @@
     cmp.connected = false
 
     cmp.messages = []
-    
-    cmp.init = function() {
-      let maxHeight = $$('.page-content').height() - 269 - 88
-      $$('#msg-card-content').css('max-height', maxHeight)
-    }
 
     cmp.on('mount', function() {
-      cmp.init()
-      $$(window).resize(function() {
-        let maxHeight = $$('.page-content').height() - 269 - 88
-        $$('#msg-card-content').css('max-height', maxHeight)
-      });
     })
     
     cmp.connect = function() {
